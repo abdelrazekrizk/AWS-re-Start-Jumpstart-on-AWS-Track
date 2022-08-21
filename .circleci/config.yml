@@ -8,30 +8,28 @@ version: 2.1
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+#workflows:
+  #sample: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     #jobs:
       #- node/build:
           # This is the node version to use for the `cimg/node` tag
           # Relevant tags can be found on the CircleCI Developer Hub
           # https://circleci.com/developer/images/image/cimg/node
-          version: '16.10'
+          #version: '16.10'
           # If you are using yarn, change the line below from "npm" to "yarn"
           # pkg-manager: npm
-    jobs:
-      - node/build:
-      - image: circleci/node:15.0.0
-    working_directory: ~/project
-    parallelism: 1    
-          # This is the node version to use for the `cimg/node` tag
-          # Relevant tags can be found on the CircleCI Developer Hub
-          # https://circleci.com/developer/images/image/cimg/node
-          version: '16.10'
-          # If you are using yarn, change the line below from "npm" to "yarn"
+jobs:
+  build:
+    docker:
+    # Use the same Docker base as the project
+       - image: cimg/node:17.5.0
+    working_directory: ~/repo
     steps:
-      - checkout                                          # Checkout code from git
-      - restore_cache:                                    # Restore from cache
+      # Checkout code from git
+      - checkout  
+      # Download and cache dependencies                                         
+      - restore_cache:                                    
           keys: [build]
       - run:
           name: build 
@@ -41,27 +39,10 @@ workflows:
                     npm run build
                     pwd
                     cd dist
-                    ls -la         
-    jobs:
-      - node/test:
-          # This is the node version to use for the `cimg/node` tag
-          # Relevant tags can be found on the CircleCI Developer Hub
-          # https://circleci.com/developer/images/image/cimg/node
-          version: '16.10'
-          # If you are using yarn, change the line below from "npm" to "yarn"
-          # pkg-manager: npm
-    steps:
-     - checkout                                            # Checkout code from git
-     - restore_cache:                                      # Restore from cache
-          keys: [build] 
-     - run:
-          name: Test
-          command: |
-                    cd app
-                    npm install
-                    npm run test
-                    pwd
                     ls -la
-     - save_cache:
-          paths: [app/node_modules]
-          key: test 
+                # Below would be the Workflows specific config
+
+workflows:
+  default:
+    jobs:         
+      - build:    
