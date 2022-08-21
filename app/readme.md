@@ -48,6 +48,14 @@ up to date, audited 1 package in 276ms
 found 0 vulnerabilities
 
 C:\Users\Abdelrazek\Desktop\app>npm i -s express 
+npm i coverage-node
+
+added 5 packages, and audited 63 packages in 5s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
 
 C:\Users\Abdelrazek\Desktop\app>code app.js
 
@@ -307,3 +315,6 @@ https://docs.docker.com/language/golang/run-containers/
 
 Run your first application on Kubernetes
 https://medium.com/@m.sedrowski/run-your-first-application-on-kubernetes-e54d5194e84b#:~:text=To%20run%20an%20application%20in,called%20Pod%20to%20manage%20containers.
+
+node/14-alpine3.16
+ https://hub.docker.com/layers/node/library/node/14-alpine3.16/images/sha256-9e9730aa7994a7d4deb26e4d5784d26c0d2c01d28de7833872cac6b8bd23a263?context=explore
