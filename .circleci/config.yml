@@ -54,6 +54,7 @@ jobs:
           command: |
                     cd app
                     npm install
+                    npm i coverage-node
                     npm run test
                     pwd
                     ls -la
@@ -82,5 +83,7 @@ workflows:
   default:
     jobs:         
       - Build    
-      - Test
+      - Test:
+        requires: [Build]
       - Scan
+        requires: [Test]
