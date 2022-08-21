@@ -38,7 +38,7 @@ jobs:
                     npm install
                     pwd
                     ls -la
- Test:
+  Test:
     docker:
     # Use the same Docker base as the project
        - image: cimg/node:17.5.0
