@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+   
+kind: Deployment
+   
+metadata:
+   
+  labels:
+   
+    app.kubernetes.io/name: load-balancer-example
+   
+  name: awsrestart
+   
+spec:
+   
+  replicas: 5
+   
+  selector:
+   
+    matchLabels:
+   
+      app.kubernetes.io/name: load-balancer-example
+   
+  template:
+   
+    metadata:
+   
+      labels:
+   
+        app.kubernetes.io/name: load-balancer-example
+   
+    spec:
+   
+      containers:
+   
+      - image: docker.io/abdelrazekrizk/awsrestart:v.1.1.1
+   
+        name: awsrestart
+   
+        ports:
+   
+        - containerPort: 3000
+   

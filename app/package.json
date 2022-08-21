@@ -1,0 +1,19 @@
+{
+  "name": "awsrestart",
+  "version": "1.0.0",
+  "description": "awsrestart",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "bootstrap",
+    "express"
+  ],
+  "author": "https://abdelrazekrizk.github.io/",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
