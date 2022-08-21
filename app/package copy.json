@@ -4,7 +4,7 @@
   "description": "awsrestart",
   "main": "app.js",
   "scripts": {
-    "test": "coverage-node test.mjs"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "nodejs",
