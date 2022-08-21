@@ -36,7 +36,6 @@ jobs:
           command: |
                     cd app
                     npm install
-                    npm run build
                     pwd
                     cd dist
                     ls -la
@@ -45,4 +44,4 @@ jobs:
 workflows:
   default:
     jobs:         
-      - build:    
+      - build    
