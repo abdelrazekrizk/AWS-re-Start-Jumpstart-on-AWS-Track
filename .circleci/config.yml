@@ -38,9 +38,49 @@ jobs:
                     npm install
                     pwd
                     ls -la
+ Test:
+    docker:
+    # Use the same Docker base as the project
+       - image: cimg/node:17.5.0
+    working_directory: ~/repo
+    steps:
+      # Checkout code from git
+      - checkout  
+      # Download and cache dependencies                                         
+      - restore_cache:                                    
+          keys: [build]
+      - run:
+          name: test 
+          command: |
+                    cd app
+                    npm install
+                    npm run test
+                    pwd
+                    ls -la
+  Scan:
+    docker:
+    # Use the same Docker base as the project
+       - image: cimg/node:17.5.0
+    working_directory: ~/repo
+    steps:
+      # Checkout code from git
+      - checkout  
+      # Download and cache dependencies                                         
+      - restore_cache:                                    
+          keys: [test]
+      - run:
+          name: scan 
+          command: |
+                    cd app
+                    npm install
+                    npm audit fix --audit-level=critical --force
+                    pwd
+                    ls -la                                        
                 # Below would be the Workflows specific config
 
 workflows:
   default:
     jobs:         
       - build    
+      - test
+      - scan
