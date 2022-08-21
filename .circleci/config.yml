@@ -20,7 +20,7 @@ version: 2.1
           # If you are using yarn, change the line below from "npm" to "yarn"
           # pkg-manager: npm
 jobs:
-  build:
+  Build:
     docker:
     # Use the same Docker base as the project
        - image: cimg/node:17.5.0
@@ -81,6 +81,6 @@ jobs:
 workflows:
   default:
     jobs:         
-      - build    
-      - test
-      - scan
+      - Build    
+      - Test
+      - Scan
