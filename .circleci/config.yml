@@ -80,12 +80,13 @@ jobs:
                 # Below would be the Workflows specific config
 
 workflows:
+  version: 2
   default:
     jobs:         
       - Build    
       - Test:
-        requires:
-         - Build
+          requires:
+            - Build
       - Scan:
-        requires:
-         - Test
+          requires:
+            - Test
